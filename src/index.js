@@ -351,7 +351,7 @@ class List {
       /** Insert New Block and set caret */
       currentItem.parentElement.removeChild(currentItem);
 
-      if (currentItem.parentElement.children.length === 0) {
+      if (currentItem.parentElement.childNodes.length === 0) {
         this.api.blocks.delete(this.api.blocks.getCurrentBlockIndex());
       }
 
