@@ -339,7 +339,7 @@ class List {
     /**
      * Save the last one.
      */
-    if (items.length < 2) {
+    if (items.length < 1) {
       return;
     }
 
