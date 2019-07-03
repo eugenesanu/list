@@ -348,11 +348,11 @@ class List {
 
     /** Prevent Default li generation if item is empty */
     if (currentItem === lastItem && !lastItem.textContent.trim().length) {
-      /** Insert New Block and set caret */
-      currentItem.parentElement.removeChild(currentItem);
-
-      if (currentItem.parentElement.childNodes.length === 0) {
+      if (currentItem.parentElement.childNodes.length === 1) {
         this.api.blocks.delete(this.api.blocks.getCurrentBlockIndex());
+      } else {
+        /** Insert New Block and set caret */
+        currentItem.parentElement.removeChild(currentItem);
       }
 
       this.api.blocks.insertNewBlock();
