@@ -348,6 +348,8 @@ class List {
 
     /** Prevent Default li generation if item is empty */
     if (currentItem === lastItem && !lastItem.textContent.trim().length) {
+      this.api.blocks.insertNewBlock();
+      
       if (currentItem.parentElement.childNodes.length === 1) {
         this.api.blocks.delete(this.api.blocks.getCurrentBlockIndex());
       } else {
@@ -355,7 +357,6 @@ class List {
         currentItem.parentElement.removeChild(currentItem);
       }
 
-      this.api.blocks.insertNewBlock();
       event.preventDefault();
       event.stopPropagation();
     }
