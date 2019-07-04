@@ -348,15 +348,16 @@ class List {
 
     /** Prevent Default li generation if item is empty */
     if (currentItem === lastItem && !lastItem.textContent.trim().length) {
-      this.api.blocks.insertNewBlock();
-      
       if (currentItem.parentElement.childNodes.length === 1) {
-        this.api.blocks.delete(this.api.blocks.getCurrentBlockIndex());
+        let index = this.api.blocks.getCurrentBlockIndex();
+        this.api.blocks.delete(index);
+        this.api.blocks.insert('paragraph', {}, {}, index, true);
       } else {
         /** Insert New Block and set caret */
         currentItem.parentElement.removeChild(currentItem);
       }
 
+      this.api.blocks.insertNewBlock();
       event.preventDefault();
       event.stopPropagation();
     }
